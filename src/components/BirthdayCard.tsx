@@ -1,38 +1,32 @@
 
 import { motion } from "framer-motion";
-import { useEffect } from "react";
 
 interface BirthdayCardProps {
   isVisible: boolean;
 }
 
 const BirthdayCard = ({ isVisible }: BirthdayCardProps) => {
-  // This useEffect will run whenever the isVisible prop changes.
-  useEffect(() => {
-    console.log(`Verification Step 2: BirthdayCard received isVisible: ${isVisible}`);
-  }, [isVisible]);
+  // The height of the envelope is 224px (h-56 in Tailwind).
+  // We use this value for our animation target.
+  const envelopeHeight = 224;
 
   return (
     <motion.div
-      // Positioned absolutely within its parent in Layout.tsx.
-      // Centered with 'left-1/2 -translate-x-1/2'.
-      // z-20 places it behind the envelope body (z-30) but in front of anything else.
-      className="absolute top-0 left-1/2 -translate-x-1/2 w-72 z-20"
+      // Positioned at the bottom of its parent container.
+      // `left-1/2 -translate-x-1/2` ensures it's perfectly centered horizontally.
+      // `z-20` places it behind the envelope body (z-30).
+      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 z-20"
       
-      // We define variants for the hidden and visible states.
       variants={{
-        // 'hidden': Starts the card shifted down by 85% of its own height.
-        // This keeps it concealed inside the envelope.
-        hidden: { y: "85%", opacity: 0 },
-        // 'visible': Moves the card up until its bottom edge aligns with the top
-        // of its container (the top of the envelope).
-        visible: { y: "-100%", opacity: 1 },
+        // `hidden`: The card's initial state. `y: 0` means it sits at the bottom
+        // of the container, perfectly concealed within the envelope.
+        hidden: { y: "0%", opacity: 0 },
+        // `visible`: The card's final state. It moves up by the height of the
+        // envelope, so its bottom edge aligns with the envelope's top.
+        visible: { y: `-${envelopeHeight}px`, opacity: 1 },
       }}
-      // Set the initial state to 'hidden'.
       initial="hidden"
-      // Animate to the 'visible' or 'hidden' state based on the isVisible prop.
       animate={isVisible ? "visible" : "hidden"}
-      // Slower, smoother animation. duration is now 2.5 seconds.
       transition={{
         type: "tween",
         ease: "easeInOut",

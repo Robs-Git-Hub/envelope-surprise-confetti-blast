@@ -14,7 +14,6 @@ const Index = () => {
       setIsEnvelopeOpen(true);
       // Delay card appearance to sync with envelope animation
       setTimeout(() => {
-        console.log("Verification Step 1: Setting showCard to true in Index.tsx");
         setShowCard(true);
         setShowConfetti(true);
       }, 800);
@@ -34,12 +33,20 @@ const Index = () => {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-pink-200/80 via-purple-200/80 to-indigo-300/80" />
       
-      {/* Content */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
+      {/* 
+        Content Container:
+        - `items-start`: Aligns the content to the top.
+        - `justify-center`: Aligns the content to the center horizontally.
+        - `pt-48`: Pushes the entire scene down from the top, lowering its position on the page.
+      */}
+      <div className="relative z-10 min-h-screen flex items-start justify-center p-4 pt-48">
         {showConfetti && <Confetti />}
         
-        {/* We keep the original changes to Envelope and BirthdayCard components */}
-        {/* The key is passing the `showCard` state into the `isVisible` prop */}
+        {/* 
+          Animation Stage:
+          This container holds both the envelope and card. Its dimensions match the envelope.
+          It acts as the coordinate system for the animation.
+        */}
         <div className="relative w-80 h-56">
           <Envelope 
             isOpen={isEnvelopeOpen} 
