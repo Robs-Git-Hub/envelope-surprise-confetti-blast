@@ -1,30 +1,36 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Envelope from "./Envelope";
 import BirthdayCard from "./BirthdayCard";
 
 const Layout = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [showCard, setShowCard] = useState(false);
 
   const handleOpen = () => {
+    // This function will only run once to prevent re-triggering the animation.
+    if (isOpen) return; 
+    
     setIsOpen(true);
-    setTimeout(() => setIsVisible(true), 700); // match flap open timing
+
+    // We'll delay the card's appearance to sync with the envelope flap opening.
+    setTimeout(() => {
+      setShowCard(true);
+    }, 500); 
   };
 
   return (
-    <div className="relative w-80 mx-auto mt-24 overflow-visible">
-      {/* Envelope */}
-      <Envelope isOpen={isOpen} onClick={handleOpen} />
-
-      {/* Clipping zone to simulate card rising from envelope */}
-      <div className="absolute top-16 left-1/2 transform -translate-x-1/2 z-30 overflow-hidden h-48 w-full">
-        <div className={`
-          transition-all duration-2000 ease-out transform 
-          ${isVisible ? '-translate-y-40 opacity-100' : 'translate-y-full opacity-0'}
-        `}>
-          <BirthdayCard />
-        </div>
+    // We use a flex container to center the entire scene. 
+    // The padding-top gives it some space from the top of the page.
+    <div className="flex justify-center items-start pt-24 w-full min-h-screen">
+      {/* 
+        This relative container is the "stage" for our animation. 
+        It holds both the envelope and the card, creating a local coordinate system
+        so they are positioned relative to each other.
+      */}
+      <div className="relative w-80 h-56">
+        <Envelope isOpen={isOpen} onClick={handleOpen} />
+        <BirthdayCard isVisible={showCard} />
       </div>
     </div>
   );

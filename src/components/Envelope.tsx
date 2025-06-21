@@ -11,7 +11,7 @@ interface EnvelopeProps {
 const Envelope = ({ isOpen, onClick }: EnvelopeProps) => {
   return (
     <div 
-      className="relative cursor-pointer transform transition-all duration-500 hover:scale-105"
+      className="relative z-30 cursor-pointer transform transition-all duration-500 hover:scale-105"
       onClick={onClick}
       style={{ perspective: "1000px" }}
     >
@@ -29,7 +29,7 @@ const Envelope = ({ isOpen, onClick }: EnvelopeProps) => {
         {/* Top Flap */}
         <div 
           className={cn(
-            "absolute top-0 left-0 w-full origin-top transition-all duration-700 ease-out z-50", // added z-50
+            "absolute top-0 left-0 w-full origin-top transition-all duration-700 ease-out z-50",
             isOpen ? "rotate-x-180" : "rotate-x-0"
           )}
           style={{ 
