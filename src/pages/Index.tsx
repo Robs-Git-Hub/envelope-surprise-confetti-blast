@@ -46,7 +46,7 @@ const Index = () => {
           - `translate-y-40`: Nudges the entire animation down by 10rem (160px) from the
             vertical center to ensure the animated card remains fully visible.
         */}
-        <div className="relative w-80 h-56 translate-y-50">
+        <div className="relative w-80 h-56 translate-y-48">
           <Envelope 
             isOpen={isEnvelopeOpen} 
             onClick={handleEnvelopeClick}
