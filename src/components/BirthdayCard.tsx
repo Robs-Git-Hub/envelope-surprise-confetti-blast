@@ -42,16 +42,13 @@ const BirthdayCard = ({ isVisible }: BirthdayCardProps) => {
         
         {/* Card Content */}
         <div className="p-6 text-center space-y-4">
-          {/* Portrait Image - Applying styles for cropping and high-quality rendering. */}
+          {/* Portrait Image - Using pre-scaled WebP asset for performance and quality. */}
           <div className="w-full mb-4">
             <img 
-              src="/assets/friends.png" 
+              src="/assets/friends.webp" 
               alt="Friends" 
               className="w-full h-48 object-cover rounded-lg shadow-md"
-              style={{ 
-                objectPosition: 'center 25%',
-                imageRendering: 'high-quality' 
-              }}
+              style={{ objectPosition: 'center 25%' }}
             />
           </div>
           
