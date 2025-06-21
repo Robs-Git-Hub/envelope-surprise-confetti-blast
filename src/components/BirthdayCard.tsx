@@ -1,5 +1,6 @@
 
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface BirthdayCardProps {
   isVisible: boolean;
@@ -11,9 +12,13 @@ const BirthdayCard = ({ isVisible }: BirthdayCardProps) => {
 
   return (
     <motion.div
-      // Centering is handled by `left-0 right-0 mx-auto`.
       // `z-40` ensures the card appears in front of the envelope (`z-30`).
-      className="absolute bottom-0 left-0 right-0 mx-auto w-72 z-40"
+      // `pointer-events-none` is added when the card is not visible to prevent
+      // it from blocking clicks on the envelope underneath.
+      className={cn(
+        "absolute bottom-0 left-0 right-0 mx-auto w-72 z-40",
+        !isVisible && "pointer-events-none"
+      )}
       
       variants={{
         // `hidden`: The card's initial state, concealed within the envelope.
