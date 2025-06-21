@@ -35,16 +35,18 @@ const Index = () => {
       
       {/* 
         Content Container:
-        - `flex items-center`: Vertically centers the content within the viewport.
+        - `flex items-center`: Vertically centers the content block.
       */}
       <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
         {showConfetti && <Confetti />}
         
         {/* 
           Animation Stage:
-          This container holds both the envelope and card. Its dimensions match the envelope.
+          - This container holds both the envelope and card.
+          - `translate-y-20`: Nudges the entire animation down by 5rem (80px) from the
+            vertical center to ensure the animated card remains fully visible on shorter screens.
         */}
-        <div className="relative w-80 h-56">
+        <div className="relative w-80 h-56 translate-y-20">
           <Envelope 
             isOpen={isEnvelopeOpen} 
             onClick={handleEnvelopeClick}
