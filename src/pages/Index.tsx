@@ -21,26 +21,40 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-200 via-purple-200 to-indigo-300 flex items-center justify-center p-4 overflow-hidden">
-      {showConfetti && <Confetti />}
+    <div className="min-h-screen relative bg-white overflow-hidden">
+      {/* Background Pattern */}
+      <div 
+        className="absolute inset-0 bg-repeat opacity-50"
+        style={{
+          backgroundImage: "url('/assets/pattern-bg.png')"
+        }}
+      />
       
-      <div className="relative">
-        <Envelope 
-          isOpen={isEnvelopeOpen} 
-          onClick={handleEnvelopeClick}
-        />
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-pink-200/80 via-purple-200/80 to-indigo-300/80" />
+      
+      {/* Content */}
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
+        {showConfetti && <Confetti />}
         
-        {showCard && (
-          <BirthdayCard />
+        <div className="relative overflow-hidden">
+          <Envelope 
+            isOpen={isEnvelopeOpen} 
+            onClick={handleEnvelopeClick}
+          />
+          
+          {showCard && (
+            <BirthdayCard />
+          )}
+        </div>
+        
+        {!isEnvelopeOpen && (
+          <div className="absolute bottom-8 text-center text-white/90 font-medium">
+            <p className="text-lg mb-2">🎉 You have a special message!</p>
+            <p className="text-sm">Click the envelope to open</p>
+          </div>
         )}
       </div>
-      
-      {!isEnvelopeOpen && (
-        <div className="absolute bottom-8 text-center text-white/80 font-medium">
-          <p className="text-lg mb-2">🎉 You have a special message!</p>
-          <p className="text-sm">Click the envelope to open</p>
-        </div>
-      )}
     </div>
   );
 };

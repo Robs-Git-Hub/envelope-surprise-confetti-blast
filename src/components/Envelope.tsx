@@ -40,18 +40,18 @@ const Envelope = ({ isOpen, onClick }: EnvelopeProps) => {
         
         {/* Envelope Seal */}
         <div className={cn(
-          "absolute top-16 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-red-500 rounded-full shadow-md transition-all duration-500",
+          "absolute top-16 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-500 rounded-full shadow-md transition-all duration-500",
           isOpen ? "opacity-50 scale-75" : "opacity-100 scale-100"
         )}>
-          <div className="absolute inset-1 bg-red-400 rounded-full" />
+          <div className="absolute inset-1 bg-blue-400 rounded-full" />
         </div>
         
         {/* Decorative Border */}
         <div className="absolute inset-2 border-2 border-dashed border-amber-300/50 rounded-md" />
       </div>
       
-      {/* Hover Glow Effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-yellow-300/20 to-amber-300/20 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      {/* Hover Glow Effect with Blue Accent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-300/20 to-blue-500/20 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
     </div>
   );
 };

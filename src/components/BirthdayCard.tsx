@@ -1,19 +1,19 @@
 
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const BirthdayCard = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
   return (
-    <div className={`
-      absolute top-16 left-1/2 transform -translate-x-1/2 
-      transition-all duration-1000 ease-out
-      ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}
-    `}>
+    <motion.div
+      className="absolute top-16 left-1/2 transform -translate-x-1/2"
+      initial={{ y: "110%" }}
+      animate={{ y: 0 }}
+      transition={{
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        duration: 0.8
+      }}
+    >
       <div className="w-72 h-96 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">
         {/* Card Header */}
         <div className="bg-gradient-to-r from-blue-500 to-purple-600 h-16 flex items-center justify-center">
@@ -22,9 +22,13 @@ const BirthdayCard = () => {
         
         {/* Card Content */}
         <div className="p-6 text-center space-y-4">
-          {/* Friend Image Placeholder */}
-          <div className="w-32 h-32 mx-auto bg-gradient-to-br from-pink-200 to-purple-300 rounded-full shadow-lg flex items-center justify-center">
-            <div className="text-4xl">👥</div>
+          {/* Portrait Image */}
+          <div className="w-full mb-4">
+            <img 
+              src="/assets/friends.png" 
+              alt="Friends" 
+              className="w-full h-32 object-cover rounded-lg shadow-md"
+            />
           </div>
           
           {/* Birthday Message */}
@@ -55,7 +59,7 @@ const BirthdayCard = () => {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
