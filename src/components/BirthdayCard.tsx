@@ -42,12 +42,13 @@ const BirthdayCard = ({ isVisible }: BirthdayCardProps) => {
         
         {/* Card Content */}
         <div className="p-6 text-center space-y-4">
-          {/* Portrait Image - `object-top` ensures the image is not cropped from the top. */}
+          {/* Portrait Image - Using inline style for precise vertical cropping. */}
           <div className="w-full mb-4">
             <img 
               src="/assets/friends.png" 
               alt="Friends" 
-              className="w-full h-48 object-cover object-top rounded-lg shadow-md"
+              className="w-full h-48 object-cover rounded-lg shadow-md"
+              style={{ objectPosition: 'center 25%' }}
             />
           </div>
           
