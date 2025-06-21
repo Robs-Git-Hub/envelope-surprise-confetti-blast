@@ -11,15 +11,13 @@ const BirthdayCard = ({ isVisible }: BirthdayCardProps) => {
 
   return (
     <motion.div
-      // Switched to `top-0` positioning for more predictable vertical animation.
-      className="absolute top-0 left-0 right-0 mx-auto w-72 z-20"
+      // VERIFICATION CHANGE: z-index is temporarily set to z-40.
+      // The Envelope body is z-30, so this will force the card to appear
+      // on top of it, proving the animation is running.
+      className="absolute top-0 left-0 right-0 mx-auto w-72 z-40"
       
       variants={{
-        // `hidden`: The card's top edge is pushed down by the envelope's height,
-        // so it starts completely outside the visible area, clipped by the parent.
         hidden: { y: `${envelopeHeight}px` },
-        // `visible`: The card is moved up by its own height. This places its
-        // bottom edge exactly at the top of the envelope container (y=0).
         visible: { y: `-${cardHeight}px` },
       }}
       initial="hidden"
