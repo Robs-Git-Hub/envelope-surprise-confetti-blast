@@ -33,18 +33,15 @@ const Index = () => {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-pink-200/80 via-purple-200/80 to-indigo-300/80" />
       
-      {/* 
-        Content Container:
-        - `pt-64`: Pushes the entire scene further down the page to a better vertical position.
-      */}
       <div className="relative z-10 min-h-screen flex items-start justify-center p-4 pt-64">
         {showConfetti && <Confetti />}
         
         {/* 
           Animation Stage:
-          This container holds both the envelope and card. Its dimensions match the envelope.
+          - Added `overflow-hidden`. This is critical. It ensures the card, 
+            which now lives "below" the envelope initially, is clipped from view.
         */}
-        <div className="relative w-80 h-56">
+        <div className="relative w-80 h-56 overflow-hidden">
           <Envelope 
             isOpen={isEnvelopeOpen} 
             onClick={handleEnvelopeClick}
