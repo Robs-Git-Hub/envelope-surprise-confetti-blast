@@ -35,9 +35,9 @@ const Index = () => {
       
       {/* 
         Content Container:
-        - `pt-64`: Pushes the entire scene further down the page to a better vertical position.
+        - `flex items-center`: Vertically centers the content within the viewport.
       */}
-      <div className="relative z-10 min-h-screen flex items-start justify-center p-4 pt-64">
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
         {showConfetti && <Confetti />}
         
         {/* 
