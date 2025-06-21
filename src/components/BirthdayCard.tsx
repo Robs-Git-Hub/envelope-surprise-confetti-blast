@@ -55,7 +55,7 @@ const BirthdayCard = ({ isVisible }: BirthdayCardProps) => {
           {/* Birthday Message */}
           <div className="space-y-3 text-gray-800">
             <p className="text-lg font-semibold text-blue-600">
-              Happy birthday mate.
+              Happy birthday mate
             </p>
             <p className="text-base">
               Ready for your next escape room?
