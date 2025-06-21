@@ -43,10 +43,10 @@ const Index = () => {
         {/* 
           Animation Stage:
           - This container holds both the envelope and card.
-          - `translate-y-32`: Nudges the entire animation down by 8rem (128px) from the
+          - `translate-y-40`: Nudges the entire animation down by 10rem (160px) from the
             vertical center to ensure the animated card remains fully visible.
         */}
-        <div className="relative w-80 h-56 translate-y-32">
+        <div className="relative w-80 h-56 translate-y-40">
           <Envelope 
             isOpen={isEnvelopeOpen} 
             onClick={handleEnvelopeClick}
