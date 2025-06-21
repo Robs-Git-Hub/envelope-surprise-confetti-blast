@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 const BirthdayCard = () => {
   return (
     <motion.div
-      className="absolute top-16 left-1/2 transform -translate-x-1/2"
-      initial={{ y: "110%" }}
-      animate={{ y: 0 }}
+      className="absolute bottom-0 left-0 w-full"
+      initial={{ y: "100%" }}
+      animate={{ y: "-100%" }}
       transition={{
         type: "spring",
         stiffness: 100,
@@ -14,7 +14,7 @@ const BirthdayCard = () => {
         duration: 0.8
       }}
     >
-      <div className="w-72 h-96 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">
+      <div className="w-72 h-[480px] bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">
         {/* Card Header */}
         <div className="bg-gradient-to-r from-blue-500 to-purple-600 h-16 flex items-center justify-center">
           <h1 className="text-white text-xl font-bold tracking-wide">Happy Birthday! 🎂</h1>
@@ -22,12 +22,12 @@ const BirthdayCard = () => {
         
         {/* Card Content */}
         <div className="p-6 text-center space-y-4">
-          {/* Portrait Image */}
+          {/* Portrait Image - increased height to show full image */}
           <div className="w-full mb-4">
             <img 
               src="/assets/friends.png" 
               alt="Friends" 
-              className="w-full h-32 object-cover rounded-lg shadow-md"
+              className="w-full h-48 object-cover rounded-lg shadow-md"
             />
           </div>
           

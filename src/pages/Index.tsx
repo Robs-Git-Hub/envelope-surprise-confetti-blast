@@ -37,14 +37,18 @@ const Index = () => {
       <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
         {showConfetti && <Confetti />}
         
-        <div className="relative overflow-hidden">
+        {/* Envelope Container with proper positioning context */}
+        <div className="relative">
           <Envelope 
             isOpen={isEnvelopeOpen} 
             onClick={handleEnvelopeClick}
           />
           
+          {/* Card Slot - acts as envelope mouth for clipping */}
           {showCard && (
-            <BirthdayCard />
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-72 h-80 overflow-hidden">
+              <BirthdayCard />
+            </div>
           )}
         </div>
         
