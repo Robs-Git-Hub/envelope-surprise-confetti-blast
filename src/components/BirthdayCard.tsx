@@ -11,8 +11,9 @@ const BirthdayCard = ({ isVisible }: BirthdayCardProps) => {
 
   return (
     <motion.div
-      // Centering is now handled by `left-0 right-0 mx-auto`, which is more robust.
-      className="absolute bottom-0 left-0 right-0 mx-auto w-72 z-20"
+      // Centering is handled by `left-0 right-0 mx-auto`.
+      // `z-40` ensures the card appears in front of the envelope (`z-30`).
+      className="absolute bottom-0 left-0 right-0 mx-auto w-72 z-40"
       
       variants={{
         // `hidden`: The card's initial state, concealed within the envelope.
@@ -36,12 +37,12 @@ const BirthdayCard = ({ isVisible }: BirthdayCardProps) => {
         
         {/* Card Content */}
         <div className="p-6 text-center space-y-4">
-          {/* Portrait Image - increased height to show full image */}
+          {/* Portrait Image - `object-top` ensures the image is not cropped from the top. */}
           <div className="w-full mb-4">
             <img 
               src="/assets/friends.png" 
               alt="Friends" 
-              className="w-full h-48 object-cover rounded-lg shadow-md"
+              className="w-full h-48 object-cover object-top rounded-lg shadow-md"
             />
           </div>
           
