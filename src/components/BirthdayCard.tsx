@@ -42,13 +42,16 @@ const BirthdayCard = ({ isVisible }: BirthdayCardProps) => {
         
         {/* Card Content */}
         <div className="p-6 text-center space-y-4">
-          {/* Portrait Image - Using inline style for precise vertical cropping. */}
+          {/* Portrait Image - Applying styles for cropping and high-quality rendering. */}
           <div className="w-full mb-4">
             <img 
               src="/assets/friends.png" 
               alt="Friends" 
               className="w-full h-48 object-cover rounded-lg shadow-md"
-              style={{ objectPosition: 'center 25%' }}
+              style={{ 
+                objectPosition: 'center 25%',
+                imageRendering: 'high-quality' 
+              }}
             />
           </div>
           
