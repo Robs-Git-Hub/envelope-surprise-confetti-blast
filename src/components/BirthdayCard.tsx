@@ -1,11 +1,17 @@
 
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 interface BirthdayCardProps {
   isVisible: boolean;
 }
 
 const BirthdayCard = ({ isVisible }: BirthdayCardProps) => {
+  // This useEffect will run whenever the isVisible prop changes.
+  useEffect(() => {
+    console.log(`Verification Step 2: BirthdayCard received isVisible: ${isVisible}`);
+  }, [isVisible]);
+
   return (
     <motion.div
       // Positioned absolutely within its parent in Layout.tsx.
@@ -17,10 +23,10 @@ const BirthdayCard = ({ isVisible }: BirthdayCardProps) => {
       variants={{
         // 'hidden': Starts the card shifted down by 85% of its own height.
         // This keeps it concealed inside the envelope.
-        hidden: { y: "85%" },
+        hidden: { y: "85%", opacity: 0 },
         // 'visible': Moves the card up until its bottom edge aligns with the top
         // of its container (the top of the envelope).
-        visible: { y: "-100%" },
+        visible: { y: "-100%", opacity: 1 },
       }}
       // Set the initial state to 'hidden'.
       initial="hidden"

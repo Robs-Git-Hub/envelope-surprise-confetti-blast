@@ -14,6 +14,7 @@ const Index = () => {
       setIsEnvelopeOpen(true);
       // Delay card appearance to sync with envelope animation
       setTimeout(() => {
+        console.log("Verification Step 1: Setting showCard to true in Index.tsx");
         setShowCard(true);
         setShowConfetti(true);
       }, 800);
@@ -37,19 +38,14 @@ const Index = () => {
       <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
         {showConfetti && <Confetti />}
         
-        {/* Envelope Container with proper positioning context */}
-        <div className="relative">
+        {/* We keep the original changes to Envelope and BirthdayCard components */}
+        {/* The key is passing the `showCard` state into the `isVisible` prop */}
+        <div className="relative w-80 h-56">
           <Envelope 
             isOpen={isEnvelopeOpen} 
             onClick={handleEnvelopeClick}
           />
-          
-          {/* Card Slot - acts as envelope mouth for clipping */}
-          {showCard && (
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-72 h-80 overflow-hidden">
-              <BirthdayCard />
-            </div>
-          )}
+          <BirthdayCard isVisible={showCard} />
         </div>
         
         {!isEnvelopeOpen && (
