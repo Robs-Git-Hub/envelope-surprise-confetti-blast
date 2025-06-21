@@ -33,20 +33,34 @@ const Index = () => {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-pink-200/80 via-purple-200/80 to-indigo-300/80" />
       
-      <div className="relative z-10 min-h-screen flex items-start justify-center p-4 pt-64">
+      {/* 
+        Content Container:
+        - `pt-80`: Increased padding to push the scene further down the page.
+      */}
+      <div className="relative z-10 min-h-screen flex items-start justify-center p-4 pt-80">
         {showConfetti && <Confetti />}
         
         {/* 
           Animation Stage:
-          - Added `overflow-hidden`. This is critical. It ensures the card, 
-            which now lives "below" the envelope initially, is clipped from view.
+          This container now acts as the main stage without any overflow clipping.
         */}
-        <div className="relative w-80 h-56 overflow-hidden">
+        <div className="relative w-80 h-56">
+          {/*
+            Card Clipping Container:
+            - This new container is dedicated to the card.
+            - It has `overflow-hidden` to clip the card.
+            - `pointer-events-none` ensures it doesn't block clicks on the envelope below it in the DOM, but z-index will handle the visual stacking.
+          */}
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <BirthdayCard isVisible={showCard} />
+          </div>
+
+          {/* The Envelope component is now a direct child of the main stage,
+              so its 3D animation context is preserved. */}
           <Envelope 
             isOpen={isEnvelopeOpen} 
             onClick={handleEnvelopeClick}
           />
-          <BirthdayCard isVisible={showCard} />
         </div>
         
         {!isEnvelopeOpen && (
