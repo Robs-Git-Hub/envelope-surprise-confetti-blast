@@ -35,17 +35,14 @@ const Index = () => {
       
       {/* 
         Content Container:
-        - `items-start`: Aligns the content to the top.
-        - `justify-center`: Aligns the content to the center horizontally.
-        - `pt-48`: Pushes the entire scene down from the top, lowering its position on the page.
+        - `pt-64`: Pushes the entire scene further down the page to a better vertical position.
       */}
-      <div className="relative z-10 min-h-screen flex items-start justify-center p-4 pt-48">
+      <div className="relative z-10 min-h-screen flex items-start justify-center p-4 pt-64">
         {showConfetti && <Confetti />}
         
         {/* 
           Animation Stage:
           This container holds both the envelope and card. Its dimensions match the envelope.
-          It acts as the coordinate system for the animation.
         */}
         <div className="relative w-80 h-56">
           <Envelope 
