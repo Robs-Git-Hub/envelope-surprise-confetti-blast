@@ -35,20 +35,21 @@ const Index = () => {
       
       {/* 
         Content Container:
-        - `pt-[30vh]`: Positions the top of the container 30% down from the top of the viewport.
+        - `pt-64`: Pushes the entire scene further down the page to a better vertical position.
       */}
-      <div className="relative z-10 min-h-screen flex items-start justify-center p-4 pt-[30vh]">
+      <div className="relative z-10 min-h-screen flex items-start justify-center p-4 pt-64">
         {showConfetti && <Confetti />}
         
+        {/* 
+          Animation Stage:
+          This container holds both the envelope and card. Its dimensions match the envelope.
+        */}
         <div className="relative w-80 h-56">
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            <BirthdayCard isVisible={showCard} />
-          </div>
-
           <Envelope 
             isOpen={isEnvelopeOpen} 
             onClick={handleEnvelopeClick}
           />
+          <BirthdayCard isVisible={showCard} />
         </div>
         
         {!isEnvelopeOpen && (

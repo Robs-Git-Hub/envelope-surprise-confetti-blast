@@ -6,19 +6,19 @@ interface BirthdayCardProps {
 }
 
 const BirthdayCard = ({ isVisible }: BirthdayCardProps) => {
-  const cardHeight = 480;
+  // The height of the envelope is 224px (h-56 in Tailwind).
   const envelopeHeight = 224;
 
   return (
     <motion.div
-      // VERIFICATION CHANGE: z-index is temporarily set to z-40.
-      // The Envelope body is z-30, so this will force the card to appear
-      // on top of it, proving the animation is running.
-      className="absolute top-0 left-0 right-0 mx-auto w-72 z-40"
+      // Centering is now handled by `left-0 right-0 mx-auto`, which is more robust.
+      className="absolute bottom-0 left-0 right-0 mx-auto w-72 z-20"
       
       variants={{
-        hidden: { y: `${envelopeHeight}px` },
-        visible: { y: `-${cardHeight}px` },
+        // `hidden`: The card's initial state, concealed within the envelope.
+        hidden: { y: "0%", opacity: 0 },
+        // `visible`: The card's final state, aligned with the envelope's top.
+        visible: { y: `-${envelopeHeight}px`, opacity: 1 },
       }}
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
